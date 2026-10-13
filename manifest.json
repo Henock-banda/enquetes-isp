@@ -1,0 +1,16 @@
+{
+  "name": "Enquêtes ISP Kasongo-Lunda",
+  "short_name": "Enquêtes ISP",
+  "description": "Collecte et analyse d'enquêtes de terrain, hors ligne",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f6f9",
+  "theme_color": "#1d5f8f",
+  "lang": "fr",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
