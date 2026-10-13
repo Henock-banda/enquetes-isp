@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d5f8f">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Enquêtes ISP Kasongo-Lunda</title>
+<style>
+:root{--bleu:#1d5f8f;--bleu2:#2b7fb8;--rose:#c98080;--or:#e9c43a;--encre:#1c2733;--gris:#5d6b7a;--fond:#f3f6f9;--trait:#d5dde5;--blanc:#fff;--ok:#2e7d4f;--alerte:#b3402f}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fond);color:var(--encre);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+#app{min-height:100vh;padding-top:env(safe-area-inset-top,0px)}
+.login{max-width:420px;margin:0 auto;padding:28px 20px}
+.login img{display:block;width:96px;margin:0 auto 12px}
+.login h1{font-size:22px;text-align:center;margin:0 0 4px}
+.login p.sub{text-align:center;color:var(--gris);margin:0 0 22px}
+.card{background:var(--blanc);border:1px solid var(--trait);border-radius:10px;padding:14px;margin:12px 0}
+label.f{display:block;font-weight:600;margin:10px 0 4px}
+input[type=text],input[type=password],input[type=number],select,textarea,.oth{width:100%;padding:11px 12px;border:1px solid #b9c6d2;border-radius:8px;background:#fff}
+textarea{min-height:84px}
+.btn{display:inline-block;border:0;border-radius:8px;padding:12px 16px;background:var(--bleu);color:#fff;font-weight:600;cursor:pointer}
+.btn.sec{background:#e4ecf3;color:var(--bleu)}
+.btn.rose{background:var(--rose)}
+.btn.dng{background:var(--alerte)}
+.btn.full{width:100%;margin-top:14px}
+.btn.sm{padding:8px 12px;font-size:14px}
+.btn:disabled{opacity:.5}
+.err{color:var(--alerte);margin-top:10px;min-height:20px}
+.muted{color:var(--gris)}
+.top{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bleu);color:#fff;position:sticky;top:0;z-index:5;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.top img{width:34px;height:34px;object-fit:contain;background:#fff;border-radius:6px;padding:2px}
+.top .t{flex:1;line-height:1.2}
+.top .t b{display:block;font-size:15px}
+.top .t span{font-size:12px;opacity:.85}
+.top button{background:rgba(255,255,255,.18);border:0;color:#fff;border-radius:8px;padding:7px 10px}
+.net{font-size:12px;padding:2px 8px;border-radius:10px;background:#ffffff30}
+main{padding:8px 14px 90px;max-width:760px;margin:0 auto}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:1px solid var(--trait);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav.tabs button{flex:1;border:0;background:none;padding:12px 4px;font-size:13px;color:var(--gris)}
+nav.tabs button.on{color:var(--bleu);font-weight:700;box-shadow:inset 0 3px 0 var(--bleu)}
+h2{font-size:19px;margin:14px 0 6px}
+h3.sec{margin:22px 0 4px;padding:8px 10px;background:var(--bleu);color:#fff;border-radius:8px;font-size:15px}
+.q{background:#fff;border:1px solid var(--trait);border-radius:10px;padding:12px;margin:10px 0}
+.qt{margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--trait);border-radius:8px;cursor:pointer}
+.opt input{width:20px;height:20px;flex:none}
+.opt:has(input:checked){border-color:var(--bleu);background:#e8f2fa}
+.oth{margin-top:8px}
+.gps{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{border:1px solid var(--trait);background:#fff;border-radius:16px;padding:6px 12px;font-size:14px}
+.chip.on{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--trait)}
+.row:last-child{border:0}
+.badge{font-size:12px;padding:2px 8px;border-radius:10px;background:#e4ecf3}
+.badge.ok{background:#dff1e6;color:var(--ok)}
+.bar{height:10px;background:#e4ecf3;border-radius:5px;overflow:hidden;min-width:60px;flex:1}
+.bar i{display:block;height:100%;background:var(--bleu2)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border:1px solid var(--trait);padding:6px 8px;text-align:left}
+th{background:#eaf1f7}
+.scroll{overflow-x:auto}
+.modal{position:fixed;inset:0;background:#0008;z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.modal>div{background:#fff;width:100%;max-width:760px;max-height:88vh;overflow:auto;border-radius:14px 14px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--encre);color:#fff;padding:10px 16px;border-radius:20px;z-index:30;max-width:90%;text-align:center}
+.verdict{padding:10px;border-radius:8px;background:#eaf1f7;margin-top:10px}
+svg text{font-size:11px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="config.js"></script>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
